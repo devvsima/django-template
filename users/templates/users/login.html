@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+<title>{{title}}</title>
+{% endblock title %}
+
+{% block content %}
+
+<form action="{% url 'user:login' %}" class="login_form" method="post">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-4 content-center">                                                             
+        {% csrf_token %} 
+        <br>
+        <div class="form-group">
+          <label for="id_username">Name</label>
+          <div class="custom_input">
+            <input type="text" name="username" autofocus="" class="form-control" placeholder="Введіть ваше ім'я користувачаі" maxlength="150" required="" id="id_username">
+          </div>
+        
+        </div>
+
+        <div class="form-group">
+          <label for="id_password">Password</label>
+          <div class="custom_input">
+            <input type="password" name="password" autocomplete="current-password" class="form-control" placeholder="Введіть ваш пароль" required="" id="id_password">
+          </div>
+        </div>
+        
+        <br>
+        <br>
+        <div class="text-center">
+          <button type="submit" class="login-btn" style="width: 100%;">Submit</button>
+        </div>
+        <a href="{% url 'user:registration' %}">Registration</a>
+      </div>
+    </div>
+  </div>
+</form>
+
+{% endblock content %}

@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+<title>{{title}}</title>
+{% endblock title %}
+
+{% block content %}
+<form action="{% url 'user:registration' %}" method="post" class="login_form">
+  {% csrf_token %}
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-4 content-center">
+        <br>
+        <div class="form-group">
+          <label for="id_first_name">First name</label>
+          <div class="custom_input">
+            <input type="text" class="form-control" id="id_first_name"
+            value="{% if form.first_name.value %}{{form.first_name.value}}{% endif %}"
+            name="first_name"
+            placeholder=""
+            required>
+            {% if form.first_name.errors %}
+            <div class="alert alert-danger alert-dismissible fade show">
+              {{form.first_name.errors}}</div>
+              {% endif %}
+            </div>
+          </div>
+        <div class="form-group">
+          <label for="id_last_name">Last name</label>
+          <div class="custom_input">
+
+          <input type="text" class="form-control" id="id_last_name" aria-describedby="emailHelp"
+            value="{% if form.last_name.value %}{{form.last_name.value}}{% endif %}"
+            name="last_name"
+            placeholder=""
+            required>
+            {% if form.last_name.errors %}
+              <div class="alert alert-danger alert-dismissible fade show">
+                {{form.last_name.errors}}</div>
+            {% endif %}
+          </div>
+
+        </div>
+        <div class="form-group">
+          <label for="id_username">Username</label>
+          <div class="custom_input">
+            
+            <input type="text" class="form-control" id="id_username"
+            name="username"
+            placeholder="" required>
+            {% if form.username.errors %}
+            <div class="alert alert-danger alert-dismissible fade show">
+              {{form.username.errors}}</div>
+              {% endif %}
+            </div>
+          </div>
+        <div class="form-group">
+          <label for="id_email">Email</label>
+          <div class="custom_input">
+            <input type="email" class="form-control" id="id_email" aria-describedby="emailHelp"
+            name="email"
+            placeholder="example@gmail.com" required>
+            {% if form.email.errors %}
+            <div class="alert alert-danger alert-dismissible fade show">
+              {{form.email.errors}}</div>
+              {% endif %}
+            </div>
+          </div>
+    
+        <div class="form-group">
+          <div class="custom_input">
+            <label for="id_password1">Password</label>
+            <input type="password" class="form-control" id="id_password1"
+            name="password1"
+            placeholder="Password">
+          </div>
+        </div>
+        {% if form.password1.errors %}
+          <div class="alert alert-danger alert-dismissible fade show">
+            {{form.password1.errors}}</div>
+        {% endif %}
+
+        {% if form.password2.errors %}
+          <div class="alert alert-danger alert-dismissible fade show">
+            {{form.password2.errors}}</div>
+        {% endif %}
+
+        <br>
+        <div class="text-center">
+          <button type="submit" class="login-btn" style="width: 100%;">Registration</button>
+          <br>
+          
+          <a href="{% url 'user:login' %}">Sub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock content %}
