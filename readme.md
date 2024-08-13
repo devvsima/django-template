@@ -1,29 +1,76 @@
-# How to start?
-This template has an initial user model and a small registration and login script. You can change it for yourself. 
+# 🚀 Getting Started
+The template is minimally loaded and has already some settings for easy deployment to the server
+It implements user registration and all sorts of little thing
 
-### ~Venv
+## 🛠️ Technologies Stack
+- `Django`
+- `PostgreSQL \ Sqlite`
+
+
+## 📥 How to Install?
+
+### 1. Clone the Repository
+First, clone the repository and navigate to its directory:
+
 ```bash
-$ python -m venv .venv
-$ python .venv/Scripts/activate
+git clone https://github.com/devvsima/django-tamplate.git
+cd app
 ```
 
-### ~Requirements
+### 2. Setting up a virtual environment ".venv"
+
+
+#### Linux
+Install dependencies and activate the virtual environment:
+
 ```bash
-$ pip install -r requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install -r requirements.txt
 ```
 
-### ~Migrations
+#### Windows
+Similar steps for Windows:
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+> 💡 Note: The name `.venv` can be changed to anything else you wish.
+
+### 3. Setting environment variable
+
+First, copy the `.env.dist` file and rename it to `.env`:
+
+```bash
+cp .env.dist .env
+```
+
+Then edit the environment variables file:
+
+```bash
+vim .env
+# or
+nano .env
+```
+
+### 4. Django commands
+
+
+#### ~Migrations
 ```bash
 $ python manage.py makemigrations
 $ python manage.py migrate
 ```
 
-### ~Create admin
+#### ~Create admin
 ```bash
 $ python manage.py createsuperuser
 ```
 
-### ~Launch
+#### ~Launch 🚀
 ```bash
 $ python manage.py runserver
 # or
