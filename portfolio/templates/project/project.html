@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block content %}
+    <main class="container mx-auto px-6 py-12">
+        <!-- Product Section -->
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <div class="md:flex">
+                <!-- Product Image -->
+                <div class="md:w-1/2 rounded-lg">
+                    <img src="{{ project.preview_photo.url }}" alt="Product Image"
+                         class="w-full h-full object-cover rounded-lg">
+                </div>
+                <!-- Product Details -->
+                <div class="md:w-1/2 p-6">
+                    <h2 class="text-3xl font-bold text-gray-800">{{ project.name }}</h2>
+                    <ul class="mt-4">
+                        <li class="text-gray-800"><strong>Технологии: </strong>{% for tag in project.tags.all %}
+                            {{ tag.name }}, {% endfor %}</li>
+                    </ul>
+                    <p class="text-gray-600 mt-4">
+                        {{ project.description }}
+                    </p>
+                    <div class="mt-6">
+                        {% if project.project_url %}
+                            <a href="{{ project.project_url }}"
+                               class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-500">
+                                Link
+                            </a>
+                        {% endif %}
+                        {% if project.github_url %}
+                            <a href="{{ project.github_url }}"
+                               class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-500">
+                                GitHub
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="mt-12">
+            <h3 class="text-2xl font-bold text-gray-800">Другие проекты</h3>
+            <div class="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                <!-- Portfolio Item -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    {% for i in images %}
+                        <img src="{{ i.image.url }}" alt="Portfolio Item" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h4 class="text-lg font-bold">Название проекта</h4>
+                            <p class="text-gray-600">Краткое описание проекта.</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- Add more items as needed -->
+            </div>
+        </section>
+    </main>
+{% endblock content %}
