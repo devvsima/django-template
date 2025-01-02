@@ -18,6 +18,8 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', env.str('server_ip', default=None), e
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -25,12 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'rest_framework',
-    
-    'drf',
-    'tgbot',
     'main',
-    'portfolio',
     'users',
 ]
 

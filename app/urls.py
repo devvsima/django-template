@@ -6,14 +6,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     
-    path('api/v1/', include('drf.urls', namespace='drf')),
     path('', include('main.urls', namespace='main')),
-    path('portfolio/', include('portfolio.urls', namespace='portfolio')),
-
-    # path('api/', include('main.urls', namespace='main')),
-    # path('user/', include('users.urls', namespace='user')),
-    
 ]
+
 from .settings import DEBUG
 if DEBUG:
     from .settings import DEBUG, MEDIA_URL, MEDIA_ROOT
