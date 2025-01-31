@@ -4,13 +4,12 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    
-    path('', include('main.urls', namespace='main')),
+    path("admin/", admin.site.urls),
+    path("", include("main.urls", namespace="main")),
 ]
 
-from .settings import DEBUG
+from .settings import DEBUG, MEDIA_URL, MEDIA_ROOT
+
 if DEBUG:
-    from .settings import DEBUG, MEDIA_URL, MEDIA_ROOT
-    urlpatterns += [path('__debug__/', include('debug_toolbar.urls'))]
+    urlpatterns += [path("__debug__/", include("debug_toolbar.urls"))]
     urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
